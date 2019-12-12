@@ -2,8 +2,11 @@
   (name asn1_combinators)
   (public_name asn1-combinators)
   (synopsis "Embed typed ASN.1 grammars in OCaml")
-  (libraries cstruct zarith ptime)
+  (libraries bigarray-compat cstruct ptime)
+  (modules_without_implementation z)
   (wrapped false)
+  (flags (:standard -no-keep-locs))
   (private_modules asn_oid asn_cache asn_writer asn_prim asn_core asn_random
-                   asn_combinators asn_ber_der))
+                   asn_combinators asn_ber_der z))
 
+(rule (copy %{lib:zarith:z.mli} z.mli))
